@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/609a8d11-05c4-417d-9b90-449f3cbf4f47/resourceGroups/nxtable/providers/Microsoft.Web/sites/nxtabletest",
+    "appService.deploySubpath": "."
+}
