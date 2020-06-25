@@ -9,20 +9,17 @@ var disponibilitatRouter = require("./routes/disponibilitat");
 
 
 
-//Settings
+
 app.set('port',process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-//Middleware
+
 app.use('/reservas', reservasRouter);
 app.use('/disponibilitat', disponibilitatRouter);
 
-//Routes
 
-
-//
 app.listen(app.get('port'),()=>{
     console.log("Listening on port 3000");
 })

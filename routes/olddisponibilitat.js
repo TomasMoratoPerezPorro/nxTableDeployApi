@@ -32,14 +32,7 @@ disponibilitatRouter.get("/:data", async (req, res, next) => {
     console.log(err);
   }
 
-  /* let objecteLlistaTaules;
-  try {
-    objecteLlistaTaules = await getTaules();
 
-    console.log("ACABO GETTAULES");
-  } catch (err) {
-    console.log(err);
-  } */
 
   console.log(objecteDies);
   res.json(objecteDies);
@@ -73,7 +66,7 @@ const getTaules = async () => {
   return llistaTaules;
 };
 
-/*  */
+
 
 const getDies = (firstDay) => {
   var daysInMonth = [];

@@ -56,12 +56,12 @@ disponibilitatRouter.get("/:data", async (req, res, next) => {
     console.log(err);
   }
 
-  /* console.log(reservasPeriode); */
+ 
   res.json(objecteLlistaTaules);
 });
 
 
-//TODOOOOOOOO ! 
+
 
 function getTaulesLliuresPerDies(reservasPerDies, objecteLlistaTaules) {
   return new Promise((resolve, reject) => {
@@ -84,7 +84,6 @@ function getReservasPerDies(objecteDies, reservasPeriode) {
       var reservas_dia_servei_1 = [];
       Array.prototype.push.apply(reservas_dia_servei_1, reservasDiaServei_1);
       dia.taules_ocupades_servei_1 = reservas_dia_servei_1;
-      ////////////////
       let reservasDiaServei_2 = reservasPeriode.filter(
         (reserva) => reserva.data == dia.dia && reserva.id_servei == 2
       );
