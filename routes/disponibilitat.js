@@ -57,7 +57,7 @@ disponibilitatRouter.get("/:data", async (req, res, next) => {
   }
 
  
-  res.json(objecteLlistaTaules);
+  res.json(reservasPerDies);
 });
 
 

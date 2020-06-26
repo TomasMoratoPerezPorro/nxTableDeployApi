@@ -1,0 +1,79 @@
+CREATE DATABASE IF NOT EXISTS restaurant;
+
+USE restaurant;
+
+CREATE TABLE taules
+(
+    id_taula INT NOT NULL AUTO_INCREMENT,
+    capacitatmaxima INT,
+    PRIMARY KEY (id_taula)
+);
+
+
+CREATE TABLE serveis
+(
+    id_servei INT NOT NULL AUTO_INCREMENT,
+    nom  VARCHAR(30),
+    PRIMARY KEY (id_servei)
+)ENGINE=INNODB;
+
+CREATE TABLE torns
+(
+    id_torn INT NOT NULL AUTO_INCREMENT,
+    id_servei INT NOT NULL,
+    nom  VARCHAR(30),
+    hora_inici TIME NOT NULL,
+    duracio INT NOT NULL,
+    PRIMARY KEY (id_torn,id_servei),
+    FOREIGN KEY (id_servei) REFERENCES serveis (id_servei)
+)ENGINE=INNODB;
+
+CREATE TABLE horaris_servei
+(
+    id_horari_servei INT NOT NULL AUTO_INCREMENT,
+    id_servei INT NOT NULL,
+    hora_obertura TIME NOT NULL,
+    hora_ultima_reserva TIME NOT NULL,
+    dia_setmana INT,
+    PRIMARY KEY (id_horari_servei,id_servei),
+    FOREIGN KEY (id_servei) REFERENCES serveis (id_servei)
+)ENGINE=INNODB;
+
+
+
+CREATE TABLE clients
+(
+    id_client INT NOT NULL AUTO_INCREMENT,
+    nom  VARCHAR(30),
+    telefon  CHAR(13),
+    PRIMARY KEY (id_client)
+)ENGINE=INNODB;
+
+CREATE TABLE reserves
+(
+    id_reserva INT NOT NULL AUTO_INCREMENT,
+    id_client INT NOT NULL,
+    id_servei INT NOT NULL,
+    id_torn INT NOT NULL,
+    hora_entrada TIME NOT NULL,
+    data DATE NOT NULL,
+    num_comensals INT NOT NULL,
+    estat INT NOT NULL,
+    comentaris VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (id_reserva),
+    FOREIGN KEY (id_client) REFERENCES clients (id_client),
+    FOREIGN KEY (id_servei) REFERENCES serveis (id_servei),
+    FOREIGN KEY (id_torn) REFERENCES torns (id_torn)
+
+)ENGINE=INNODB;
+
+CREATE TABLE adjudicacions
+(
+    id_reserva INT NOT NULL,
+    id_taula INT,
+    PRIMARY KEY (id_reserva,id_taula),
+    FOREIGN KEY (id_reserva) REFERENCES reserves (id_reserva),
+    FOREIGN KEY (id_taula) REFERENCES taules (id_taula)
+)ENGINE=INNODB;
+ 
+

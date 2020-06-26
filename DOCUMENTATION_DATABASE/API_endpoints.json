@@ -1,0 +1,42 @@
+{
+    "id": "001",
+    "servei": 1,
+    "torn": 1,
+    "nom": "Tomàs Morató",
+    "telefon": "0034-650598080",
+    "taula": "1",
+    "comentaris": "Alèrgic al gluten",
+    "dia": "2020–04–02",
+    "horaEntrada": "13:30:00",
+    "estat": 1
+  }
+
+
+  {
+    "GET /reservas/:dia": {
+      "desc": "retorna una llista de reserves representada per un dia concret",
+      "response": "200 application/json",
+      "data": [{}, {}, {}]
+    },
+    
+    "POST /reserva": {
+      "desc": "crea i retorna una nova reserva utilitzant el objecte enviat com a reserva",
+      "response": "201 application/json",
+      "data": {}
+    },
+  
+    "PUT /reserva/:id": {
+      "desc": "actualitza i retorna la reserva corresponent amb el objecte actualitzat",
+      "response": "200 application/json",
+      "data": {}
+    },
+  
+    "DELETE /reserva/:id": {
+      "desc": "elimina la reserva i retorna el objecte eliminat",
+      "response": "200 application/json",
+      "data": {}
+    }
+  }
+
+
+  

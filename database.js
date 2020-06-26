@@ -1,6 +1,8 @@
 const mysql = require("mysql");
 
 
+
+
 const mysqlConnection = mysql.createConnection({
     host: "nxtabledatabase.mysql.database.azure.com",
     user:"nxtableadmin@nxtabledatabase",

@@ -1,0 +1,39 @@
+
+
+USE restaurant;
+SELECT * FROM reserves 
+inner join clients 
+on reserves.id_client = clients.id_client and reserves.data="2020-05-05"
+inner join adjudicacions
+on reserves.id_reserva = adjudicacions.id_reserva and reserves.data="2020-05-05"
+
+
+
+// NOVA RESERVA 
+USE restaurant;
+INSERT INTO clients (nom, telefon)
+SELECT * FROM (SELECT 'Tomas', '0034650591313') AS tmp
+WHERE NOT EXISTS(
+    SELECT telefon FROM clients WHERE telefon='0034650591313'
+)LIMIT 1;
+
+SET @id_this_client = (SELECT id_client FROM clients WHERE telefon='0034650591313');
+SET @hora_entrada = (SELECT hora_inici FROM torns WHERE id_torn=2);
+
+INSERT INTO reserves (id_client,id_servei,id_torn,hora_entrada,data,num_comensals,estat)
+VALUES (@id_this_client,1,2,@hora_entrada,"2020-05-27",2,1);
+
+SET @last_id_in_reservas = LAST_INSERT_ID();
+INSERT INTO adjudicacions (id_reserva,id_taula)
+VALUES (@last_id_in_reservas,8)
+
+
+{
+	"nom":"Joan Pascual",
+	"telefon":"0034605367887",
+	"torn":3,
+	"data":"2020-05-28",
+	"num_comensals":2,
+	"estat":1,
+	"id_taula":5
+}
