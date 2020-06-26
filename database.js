@@ -1,13 +1,15 @@
+require('dotenv').config();
 const mysql = require("mysql");
 
 
 
 
+
 const mysqlConnection = mysql.createConnection({
-    host: "nxtabledatabase.mysql.database.azure.com",
-    user:"nxtableadmin@nxtabledatabase",
-    password:"nxtable48097932X",
-    database:"restaurant",
+    host: process.env.DB_HOST,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASS,
+    database:process.env.DB_DATABASE,
     port: 3306,
     dateStrings: true,
     multipleStatements:true
