@@ -13,7 +13,7 @@ var pool = mysql.createPool({
 
 /* module.exports = pool; */
 
-const mysqlConnection = mysql.createConnection({
+/* const mysqlConnection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -30,9 +30,9 @@ mysqlConnection.connect(function (err) {
   } else {
     console.log("Db is connected");
   }
-});
+}); */
 
-module.exports.mysqlConnection = mysqlConnection;
+/* module.exports.mysqlConnection = mysqlConnection; */
 module.exports.pool = pool;
 
 /* module.exports = mysqlConnection; */
