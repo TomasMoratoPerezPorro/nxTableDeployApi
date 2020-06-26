@@ -4,7 +4,9 @@ var async = require("async");
 var disponibilitatRouter = require("express").Router();
 var moment = require("moment");
 
-const mysqlConnection = require("../database");
+const myModule = require("../database");
+const mysqlConnection = myModule.mysqlConnection;
+
 
 disponibilitatRouter.get("/:data", async (req, res, next) => {
   console.log("ENTRO AL GET");
@@ -56,19 +58,14 @@ disponibilitatRouter.get("/:data", async (req, res, next) => {
     console.log(err);
   }
 
- 
   res.json(reservasPerDies);
 });
-
-
-
 
 function getTaulesLliuresPerDies(reservasPerDies, objecteLlistaTaules) {
   return new Promise((resolve, reject) => {
     reservasPerDies.forEach((dia) => {
       dia.taules_ocupades_servei_1.forEach((reserva) => {
         let taulesLliuresServei_1 = objecteLlistaTaules;
-        
       });
     });
     resolve(objecteDies);
