@@ -208,6 +208,8 @@ INSERT INTO adjudicacions (id_reserva,id_taula)
 VALUES (17,5);
 INSERT INTO adjudicacions (id_reserva,id_taula)
 VALUES (18,7);
+...
+...
 
 
 
@@ -220,3 +222,32 @@ WHERE NOT EXISTS(
 
 
 
+
+
+///Post RESERVA
+
+SET @nom=?;
+  SET @telefon=?;
+  SET @torn=?;
+  SET @data=?;
+  SET @num_comensals=?;
+  SET @estat=?;
+  SET @comentaris=?;
+
+  INSERT INTO clients (nom, telefon)
+  SELECT * FROM (SELECT @nom, @telefon) AS tmp
+  WHERE NOT EXISTS(
+      SELECT telefon FROM clients WHERE telefon=@telefon
+  )LIMIT 1;
+  SET @id_this_client = (SELECT id_client FROM clients WHERE telefon=@telefon);
+  SET @hora_entrada = (SELECT hora_inici FROM torns WHERE id_torn=@torn);
+  SET @servei = (SELECT id_servei FROM torns WHERE id_torn=@torn);
+
+  INSERT INTO reserves (id_client,id_servei,id_torn,hora_entrada,data,num_comensals,estat,comentaris)
+  VALUES (@id_this_client,@servei,@torn,@hora_entrada,@data,@num_comensals,@estat,@comentaris); 
+
+// del RESERVA
+
+SET @id=?;
+      DELETE FROM adjudicacions WHERE id_reserva=@id;
+      DELETE FROM reserves WHERE id_reserva=@id;
