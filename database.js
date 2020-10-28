@@ -6,7 +6,7 @@ var pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_DATABASE,
-  port: 3306,
+  /* port: 3306, */
   dateStrings: true,
   multipleStatements: true,
 });
@@ -14,11 +14,4 @@ var pool = mysql.createPool({
 
 module.exports.pool = pool;
 
-/* const mysqlConnection = mysql.createConnection({
-  host: "localhost",
-  user:"root",
-  password:"password",
-  database:"restaurant",
-  dateStrings: true,
-  multipleStatements:true
-}); */
+
